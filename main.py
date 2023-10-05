@@ -1,9 +1,3 @@
-# avads_db_connector_python
-Реализация клиента AVADS TCP на Python
-
-# Пример использования
-
-```python
 import socket
 import io
 import lib
@@ -13,7 +7,7 @@ import base
 import series
 import pack
 
-host = '127.0.0.1'
+host = '10.0.1.33'
 port = 7777
 login = 'admin'
 password = 'admin'
@@ -149,5 +143,3 @@ try:
 finally:
     lib.baseClose(s, baseId)
     print('end')
-
-```
