@@ -7,8 +7,7 @@ import base
 import series
 import pack
 
-
-host = '127.0.0.1'
+host = '10.0.1.33'
 port = 7777
 login = 'admin'
 password = 'admin'
@@ -91,20 +90,22 @@ try:
         b = pack.packRow(series1, typ.SimpleClass, i, 92, i)
         data += b
     count = lib.dataAddRowCache(s, baseId, data)
-    print("count:", count)
+    print("dataAddRowCache count:", count)
 
     data = bytes()
     for i in range(10):
         b = pack.packRow(series2, typ.SimpleClass, i, 92, i)
         data += b
     lib.dataAddRows(s, baseId, data)
+    print("dataAddRows baseId:", baseId)
 
     data = bytes()
     for i in range(10):
-        value = f"Разкудрить твою налева все четыре колеса {i} раз"
+        value = f"line {i} text text"
         b = pack.packRow(series3, typ.BlobClass, i, 92, value)
         data += b
     lib.dataAddRows(s, baseId, data)
+    print("dataAddRows baseId:", baseId)
 
     bou = lib.dataGetBoundary(s, baseId, series0)
     print("boundary:", bou)

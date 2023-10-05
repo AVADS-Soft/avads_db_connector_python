@@ -9,6 +9,7 @@ import boundary
 import rec_witch_cp
 import base
 import series
+import base
 
 FS_FS: str = "fs"  # Файл базы пишется единым сегментом
 FS_MULTIPART: str = "fs_mp"  # Файл бары разбивается по кускам 1 гб
@@ -120,20 +121,20 @@ def baseGetInfo(s, name):
         msg, offset = pack.unpackString(b, offset)
         msg = "base get info: " + msg
         raise BaseException(msg)
-    base = Base()
-    base.name, offset = pack.unpackString(b, offset)
-    base.path, offset = pack.unpackString(b, offset)
-    base.comment, offset = pack.unpackString(b, offset)
-    base.status, offset = pack.unpackInt64(b, offset)
-    base.looping.typ, offset = pack.unpackUInt8(b, offset)
-    base.looping.lt, offset = pack.unpackString(b, offset)
-    base.dbSize, offset = pack.unpackString(b, offset)
-    base.fsType, offset = pack.unpackString(b, offset)
-    base.autoAddSeries, offset = pack.unpackBoolean(b, offset)
-    base.autoSave, offset = pack.unpackBoolean(b, offset)
-    base.autoSaveDuration, offset = pack.unpackString(b, offset)
-    base.autoSaveInterval, offset = pack.unpackString(b, offset)
-    return base
+    res = base.Base()
+    res.name, offset = pack.unpackString(b, offset)
+    res.path, offset = pack.unpackString(b, offset)
+    res.comment, offset = pack.unpackString(b, offset)
+    res.status, offset = pack.unpackInt64(b, offset)
+    res.looping.typ, offset = pack.unpackUInt8(b, offset)
+    res.looping.lt, offset = pack.unpackString(b, offset)
+    res.dbSize, offset = pack.unpackString(b, offset)
+    res.fsType, offset = pack.unpackString(b, offset)
+    res.autoAddSeries, offset = pack.unpackBoolean(b, offset)
+    res.autoSave, offset = pack.unpackBoolean(b, offset)
+    res.autoSaveDuration, offset = pack.unpackString(b, offset)
+    res.autoSaveInterval, offset = pack.unpackString(b, offset)
+    return res
 
 
 def baseRemove(s, name):
