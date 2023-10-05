@@ -2,7 +2,7 @@ LiteDB connector python
 
 # Пример использования
 
-```
+```python
 import socket
 import io
 import lib
